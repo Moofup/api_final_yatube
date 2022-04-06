@@ -6,8 +6,11 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from posts.models import Group, Post, User, Follow
 from .permissions import IsAuthorOrReadOnly
-from .serializers import (
-    PostSerializer, UserSerializer, GroupSerializer, CommentSerializer, FollowSerializer)
+from .serializers import (PostSerializer,
+                          UserSerializer,
+                          GroupSerializer,
+                          CommentSerializer,
+                          FollowSerializer)
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
@@ -52,7 +55,6 @@ class FollowViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         return Follow.objects.filter(user=user)
-
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
