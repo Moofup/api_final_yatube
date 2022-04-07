@@ -6,9 +6,9 @@ from posts.models import Comment, Post, User, Group, Follow
 
 
 class UserSerializer(serializers.ModelSerializer):
-    posts = serializers.SlugRelatedField(many=True,
-                                         read_only=True,
-                                         slug_field='posts')
+    posts = SlugRelatedField(many=True,
+                             read_only=True,
+                             slug_field='posts')
 
     class Meta:
         model = User
@@ -36,19 +36,19 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ('id', 'title', 'slug', 'description')
+        fields = '__all__'
         model = Group
 
 
 class FollowSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField(
-        default=serializers.CurrentUserDefault(),
-        read_only=True,
+    user = SlugRelatedField(
+        slug_field='username', queryset=User.objects.all(),
+        default=serializers.CurrentUserDefault()
     )
-    following = serializers.SlugRelatedField(
+    following = SlugRelatedField(
         required=True,
         queryset=User.objects.all(),
-        slug_field='username'
+        slug_field='username',
     )
 
     class Meta:
