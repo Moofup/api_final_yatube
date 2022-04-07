@@ -14,21 +14,21 @@ API для использования социальной сети Yatube.
 
 Клонируйте репозиторий:
 
-$ git clone https://github.com/Moofup/api_final_yatube.git
+`$ git clone https://github.com/Moofup/api_final_yatube.git`
 
 Создайте виртуальное окружение:
 
-$ python -m venv venv
+`$ python -m venv venv`
 
 Устанавите зависимости:
 
-$ pip install -r requirements.txt
+`$ pip install -r requirements.txt`
 
 Примените миграции:
 
-$ python manage.py migrate
+`$ python manage.py migrate`
 
 Запустите локальный django-сервер:
 
-$ python manage.py runserver
+`$ python manage.py runserver`
 
